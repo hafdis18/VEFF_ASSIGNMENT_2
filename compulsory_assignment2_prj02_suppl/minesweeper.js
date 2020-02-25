@@ -6,7 +6,7 @@ function Generate(){
     var valmines = document.getElementById("valmines").value;
 
 
-    axios.post(url, {rows: 10, cols: 10 , mines: 10})
+    axios.post(url, {rows: valrows, cols: valcols , mines: valmines})
                 .then(function (response) {
                     console.log("Success: ", response.data);
 
@@ -35,6 +35,10 @@ function Generate(){
                 })
                 .catch(function (error) {
                     console.log(error);
+                    // var boardsize = valcols*valrows;
+                    // if (valmines > boardsize){
+                    //     console.log(error);
+                    // }
                 })
 }
 
