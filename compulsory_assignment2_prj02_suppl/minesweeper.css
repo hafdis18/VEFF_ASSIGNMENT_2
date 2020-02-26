@@ -1,4 +1,17 @@
-#MinesweeperBoard button{
-    background-color: lightgray;
-    height: 15px;
+body{
+    background-color: aqua;
+    color: black;
+    text-align: center;
 }
+
+#MinesweeperBoard {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table{
+    background-color: gray;
+}
+
+
+
