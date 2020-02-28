@@ -19,27 +19,45 @@ function Generate(){
 }
 
 
-
 function makeBoard(rows, columns, minePos){
     var buttonDiv = document.getElementById("MinesweeperBoard");
     while (buttonDiv.firstChild){
         buttonDiv.removeChild(buttonDiv.firstChild);
     }
     var buttonDiv = document.getElementById("MinesweeperBoard");
+    var id = 0;
 
-
+    var myarr = [];
     for (i = 0; i < rows; i++){
-        for (j =0; j < columns; j++){
-            var myarr = [[i],[j]];
+        for (j = 0; j < columns; j++){
+            var position = {
+                pos:[i,j],
+                id:"mybutton"+id
+            }
+            myarr.push(position)
             var button = document.createElement("button");
-            button.setAttribute("value", myarr);
+            button.setAttribute("id","mybutton"+id);
             buttonDiv.appendChild(button);
+            id += 1;
         }
         var br = document.createElement("br")
         buttonDiv.appendChild(br)
     }
+    console.log(myarr)
+    setMines(minePos,myarr);
+}
 
-
+function setMines(minePos,myarr){
+    minePos.forEach(pos => {
+        for(var i = 0; i < myarr.length;i++){
+            if(pos[0] == myarr[i].pos[0] && pos[1] == myarr[i].pos[1]){
+                document.getElementById(myarr[i].id).style.background='#000000'
+                document.getElementById(myarr[i].id).setAttribute("data-mine",true)
+                
+            }
+        }
+        
+    });
 }
 
 
