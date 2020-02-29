@@ -60,12 +60,11 @@ function setMines(minePos,myarr){
     });
 }
 
-function revealMines(myarr, minePos, button){
+function revealMines(myarr, minePos){
     minePos.forEach(pos => {
         for(var i = 0; i < myarr.length;i++){
             if(pos[0] == myarr[i].pos[0] && pos[1] == myarr[i].pos[1]){
-                document.getElementById(myarr[i].id).className = 'revealMines';
-                document.getElementById(myarr[i].id).removeAttribute("id");
+                document.getElementById(myarr[i].id).setAttribute("mine","true");
             }
         }
     });
@@ -76,7 +75,7 @@ function clickCell(button, myarr, minePos){
     console.log("clickCell");
     if (button.getAttribute("mine") === "true"){
         console.log("BOMB");
-        revealMines(myarr, minePos, button);
+        revealMines(myarr, minePos);
         // for (i=0; i<myarr.length; i++){
         //     if (button.getAttribute("mine") === "true"){
         //        document.getElementById(myarr[i].id).setAttribute("value","revealMines");
